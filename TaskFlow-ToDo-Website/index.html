@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow | Smart Task Manager</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">✦</span>
+                TaskFlow<span class="logo-dot">.</span>
+            </a>
+
+            <div class="sidebar-label">MENU</div>
+
+            <nav class="sidebar-nav">
+
+                <button class="nav-item active" data-filter="all">
+                    <span>▦</span>
+                    All Tasks
+                    <span class="nav-count" id="allCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="pending">
+                    <span>◷</span>
+                    Pending
+                    <span class="nav-count" id="pendingCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="completed">
+                    <span>✓</span>
+                    Completed
+                    <span class="nav-count" id="completedCount">0</span>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-note">
+                    <span>💡</span>
+                    <h4>Stay productive!</h4>
+                    <p>Small steps every day lead to big achievements.</p>
+                </div>
+
+                <p class="sidebar-copy">© 2026 TaskFlow</p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="top-header">
+
+                <div>
+                    <span class="date-label" id="currentDate"></span>
+                    <h1>My Tasks<span>.</span></h1>
+                    <p>Organize your day and achieve more.</p>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-avatar">T</div>
+                    <div>
+                        <h4>Task Manager</h4>
+                        <p>Stay focused</p>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card blue-card">
+                    <div class="stat-top">
+                        <span>Total Tasks</span>
+                        <span class="stat-icon">▦</span>
+                    </div>
+                    <h2 id="totalTasks">0</h2>
+                    <p>Tasks created</p>
+                </div>
+
+                <div class="stat-card orange-card">
+                    <div class="stat-top">
+                        <span>Pending</span>
+                        <span class="stat-icon">◷</span>
+                    </div>
+                    <h2 id="pendingTasks">0</h2>
+                    <p>Waiting to be done</p>
+                </div>
+
+                <div class="stat-card green-card">
+                    <div class="stat-top">
+                        <span>Completed</span>
+                        <span class="stat-icon">✓</span>
+                    </div>
+                    <h2 id="completedTasks">0</h2>
+                    <p>Successfully finished</p>
+                </div>
+
+            </section>
+
+
+            <!-- PROGRESS SECTION -->
+
+            <section class="progress-section">
+
+                <div class="progress-heading">
+                    <div>
+                        <h3>Daily Progress</h3>
+                        <p>Keep moving towards your goals!</p>
+                    </div>
+
+                    <strong id="progressPercentage">0%</strong>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+
+            </section>
+
+
+            <!-- ADD TASK SECTION -->
+
+            <section class="task-input-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Create a Task</h2>
+                        <p>What would you like to accomplish?</p>
+                    </div>
+                </div>
+
+                <form id="taskForm">
+
+                    <div class="task-input-wrapper">
+
+                        <span class="input-icon">✎</span>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="Enter your task here..."
+                            maxlength="100"
+                            autocomplete="off"
+                        >
+
+                        <button type="submit" id="addTaskBtn">
+                            + Add Task
+                        </button>
+
+                    </div>
+
+                    <small id="formError" class="form-error"></small>
+
+                </form>
+
+            </section>
+
+
+            <!-- TASK LIST -->
+
+            <section class="tasks-section">
+
+                <div class="tasks-heading">
+
+                    <div>
+                        <h2>My Task List</h2>
+                        <p>Manage your activities efficiently.</p>
+                    </div>
+
+                    <button id="clearCompleted" class="clear-btn">
+                        Clear Completed
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER BUTTONS -->
+
+                <div class="filter-buttons">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="pending">
+                        Pending
+                    </button>
+
+                    <button class="filter-btn" data-filter="completed">
+                        Completed
+                    </button>
+
+                </div>
+
+
+                <!-- TASK LIST CONTAINER -->
+
+                <div id="taskList" class="task-list">
+
+                    <!-- JavaScript adds tasks here -->
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+
+                <div id="emptyState" class="empty-state">
+
+                    <div class="empty-icon">✦</div>
+
+                    <h3>No tasks yet!</h3>
+
+                    <p>Add your first task and start being productive.</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+                Made with <span>♥</span> for a productive day.
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
